@@ -1,4 +1,7 @@
 import socket
+import time
+
+HEADERSIZE = 10
 
 # create the socket
 # AF_INET == ipv4
@@ -11,11 +14,11 @@ port = 1234
 server = socket.gethostname()
 
 print("\nBinding to port ", port, ", please wait ... ")
-s.bind((server, port)) # What is bind doing?
+s.bind((server, port)) # What is bind doing
 print("Server started: " + server)
 print("Waiting for a client ...")
 
-# queue of 5
+# queue of 5 messages/clients?
 s.listen(5)
 
 # And now, we just listen!
@@ -24,5 +27,19 @@ while True:
     clientsocket, address = s.accept()
     print(f"Connection from {address} has been established.")
     
-    clientsocket.send(bytes("Hello World!!", "utf-8"))
-    clientsocket.close() # What happens when we remove this? 
+    msg = "Welcome to the server!"
+    msg = f"{len(msg):<{HEADERSIZE}}"+ msg # Formating to keep length below certain size
+
+    clientsocket.send(bytes(msg, "utf-8"))
+    
+    while True:
+        time.sleep(7)
+        msg = f"The time is {time.time()}"
+        msg = f"{len(msg):<{HEADERSIZE}}"+ msg
+
+        print(msg)
+        clientsocket.send(bytes(msg,"utf-8"))
+
+    # clientsocket.close()
+
+    
