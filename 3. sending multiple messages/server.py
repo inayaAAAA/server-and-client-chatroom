@@ -4,8 +4,6 @@ import time
 HEADERSIZE = 10
 
 # create the socket
-# AF_INET == ipv4
-# SOCK_STREAM == TCP
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # For IP sockets, the address that we bind to is a 
@@ -18,7 +16,7 @@ s.bind((server, port)) # What is bind doing
 print("Server started: " + server)
 print("Waiting for a client ...")
 
-# queue of 5 messages/clients?
+# queue of 5 messages/clients
 s.listen(5)
 
 # And now, we just listen!
@@ -39,7 +37,5 @@ while True:
 
         print(msg)
         clientsocket.send(bytes(msg,"utf-8"))
-
-    # clientsocket.close()
 
     

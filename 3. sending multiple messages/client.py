@@ -4,7 +4,6 @@ HEADERSIZE = 10
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-# Now, since this is the client, rather than binding, we are going to connect.
 port = 1234
 server = socket.gethostname()
 # or server = '192.168.1.241'
