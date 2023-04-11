@@ -8,9 +8,10 @@ port = 1234
 server = socket.gethostname()
 
 s.connect((server, 1234))
-print("Connected to server!")
+print("\nConnected to server!")
 
-# Looping through entire message until it ends!
+# # # New # # # 
+# Looping through entire message until it ends
 while True: 
     full_msg = ''
     while True:

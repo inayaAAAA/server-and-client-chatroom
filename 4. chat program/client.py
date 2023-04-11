@@ -31,7 +31,7 @@ while True:
         message = message.encode('utf-8')
         message_header = f"{len(message):<{HEADER_LENGTH}}".encode('utf-8')
         client_socket.send(message_header + message)
-
+""" 
     try:
         # Now we want to loop over received messages (there might be more than one) and print them
         while True:
@@ -69,4 +69,4 @@ while True:
     except Exception as e:
         # Any other exception - something happened, exit
         print('Reading error: '.format(str(e)))
-        sys.exit()
+        sys.exit() """

@@ -6,8 +6,6 @@ HEADERSIZE = 10
 # create the socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-# For IP sockets, the address that we bind to is a 
-# tuple of the hostname and the port number.
 port = 1234
 server = socket.gethostname()
 
@@ -16,7 +14,6 @@ s.bind((server, port)) # What is bind doing
 print("Server started: " + server)
 print("Waiting for a client ...")
 
-# queue of 5 messages/clients
 s.listen(5)
 
 # And now, we just listen!
@@ -25,8 +22,9 @@ while True:
     clientsocket, address = s.accept()
     print(f"Connection from {address} has been established.")
     
+    # # # New # # # 
     msg = "Welcome to the server!"
-    msg = f"{len(msg):<{HEADERSIZE}}"+ msg # Formating to keep length below certain size
+    msg = f"{len(msg):<{HEADERSIZE}}"+ msg
 
     clientsocket.send(bytes(msg, "utf-8"))
     
